@@ -64,7 +64,7 @@ while True:
         url = row["URL"]
         try:
             driver.get(url)
-            time.sleep(3)  # Allow the page to load
+            time.sleep(10)  # Allow the page to load
 
             # Parse the page source using BeautifulSoup
             soup = BeautifulSoup(driver.page_source, "html.parser")
@@ -142,8 +142,7 @@ while True:
                 
             })
 
-            print(f"{counter}. Processed URL: {url}")  # Print with counter
-            counter += 1  # Increment the counter
+            
 
         except Exception as e:
             print(f"Error fetching details for URL {url}: {e}")
@@ -166,6 +165,8 @@ while True:
         print(f"Removed processed URLs from {input_csv}")
     except Exception as e:
         print(f"Error updating input CSV: {e}")
+print(f"{counter}. Processed URL: {url}")  # Print with counter
+counter += 1  # Increment the counter
 
 print("All batches have been processed.")
 driver.quit()
